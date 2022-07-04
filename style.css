@@ -49,6 +49,44 @@ p.overlay-title {
     margin: 24px -8px -8px;
 }
 
+p.overlay-description {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 1.25;
+
+    margin-bottom: 16px;
+}
+
+a.overlay-link {
+    display: inline-block;
+
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(132, 94, 194);
+    line-height: 1;
+
+    position: relative;
+
+    margin-top: 16px;
+}
+
+a.overlay-link::before {
+    position: absolute;
+
+    content: "";
+
+    height: calc(50% + 4px);
+    width: calc(100% + 8px);
+
+    bottom: -4px;
+    left: -4px;
+
+    background-color: rgba(132, 94, 194, 0.1);
+}
+
 #accept-button {
     background-color: green;
 
