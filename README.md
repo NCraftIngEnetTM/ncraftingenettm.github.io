@@ -1,2 +1,2 @@
-# https://ncraftingenettm.github.io/nescrimer/
+# https://ncraftingenettm.github.io/yashop
 Сделай так чтобы ваш друг обосрался
