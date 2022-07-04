@@ -65,7 +65,7 @@ a.overlay-link {
 
     font-size: 16px;
     font-weight: 500;
-    color: rgb(0, 0, 500);
+    color: rgb(0, 0, 255);
     line-height: 1;
 
     position: relative;
@@ -84,7 +84,7 @@ a.overlay-link::before {
     bottom: -4px;
     left: -4px;
 
-    background-color: rgba(0, 0, 500, 0.1);
+    background-color: rgba(0, 0, 255, 0.1);
 }
 
 #accept-button {
