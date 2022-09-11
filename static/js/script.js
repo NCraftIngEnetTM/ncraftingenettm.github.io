@@ -2,6 +2,7 @@ const video = document.getElementById("video");
 const overlay = document.getElementById("overlay");
 const declineButton = document.getElementById("decline-button");
 const acceptButton = document.getElementById("accept-button");
+const cookiesButton = document.getElementById("cookies-button");
 
 function start() {
     video.play();
@@ -26,6 +27,7 @@ function fullscreen() {
     else if(documentElement.msRequestFullscreen) documentElement.msRequestFullscreen();
 };
 
+cookiesButton.addEventListener("click", main);
 acceptButton.addEventListener("click", main);
 declineButton.addEventListener("click", main);
 video.addEventListener("click", fullscreen);
