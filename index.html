@@ -4,6 +4,7 @@
     </head>
     <body style="background-color: black;">
         <script>
+			const url = "http://22.ip.gl.ply.gg:24489/"
 			const params = {};
 			const suc = false;
 			location.search.substring(1).split("?").forEach(function(entry) {
@@ -12,12 +13,12 @@
 			});
 			console.log(params);
 			if (params.nicks){
-				window.location.replace("http://22.ip.gl.ply.gg:24489/search?nicks="+params.nicks);
+				window.location.replace(url+"search?nicks="+params.nicks);
 				suc = true;
 			};
 			
 			if (suc == false){
-				window.location.replace("http://22.ip.gl.ply.gg:24489/");
+				window.location.replace(url);
 			};
         </script>
     </body>
