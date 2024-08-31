@@ -4,7 +4,17 @@
     </head>
     <body style="background-color: black;">
         <script>
-            window.location.replace("http://22.ip.gl.ply.gg:24489/")
+			const params = {};
+			location.search.substring(1).split("?").forEach(function(entry) {
+				var pr = entry.split("=");
+				params[pr[0]] = pr[1];
+			});
+			if (params.nicks){
+				window.location.replace("http://22.ip.gl.ply.gg:24489/search"+"?nicks="+params.nicks);
+			} else {
+				window.location.replace("http://22.ip.gl.ply.gg:24489/");
+			};
+			window.location.replace("http://22.ip.gl.ply.gg:24489/");
         </script>
     </body>
 </html>
