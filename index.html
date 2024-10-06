@@ -39,14 +39,17 @@
 			var pr = entry.split("=");
 			params[pr[0]] = pr[1];
 		});
-		if (params.nicks){
-			window.location.replace("http://22.ip.gl.ply.gg:53657/search?nicks="+params.nicks);
-			suc = true;
+		function redirect() {
+			if (params.nicks){
+				window.location.replace("http://22.ip.gl.ply.gg:53657/search?nicks="+params.nicks);
+				suc = true;
+			};
+			
+			if (suc == false){
+				window.location.replace("http://22.ip.gl.ply.gg:53657/");
+			};
 		};
-		
-		if (suc == false){
-			window.location.replace("http://22.ip.gl.ply.gg:53657/");
-		};
+		setTimeout(redirect, 1000);
         </script>
     </body>
 </html>
