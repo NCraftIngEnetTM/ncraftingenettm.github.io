@@ -60,15 +60,15 @@
 	                    window.location.href = urlMappings[code];
 	                } else {
 	                    loadingElement.style.display = "none";
-	                    document.body.innerHTML = `<h1>Ошибка</h1><p>Код "${code}" не найден.</p>`;
+	                    document.body.innerHTML = `<h1 style="color: red;">Ошибка</h1><p style="color: red;">Код "${code}" не найден.</p>`;
 	                }
 	            })
 	            .catch(error => {
 	                loadingElement.style.display = "none";
-	                document.body.innerHTML = `<h1>Ошибка</h1><p>Произошла ошибка: ${error.message}</p>`;
+	                document.body.innerHTML = `<h1 style="color: red;">Ошибка</h1><p style="color: red;">Произошла ошибка: ${error.message}</p>`;
 	            });
 	    } else {
-	        document.body.innerHTML = `<h1>Сокращение ссылок</h1><p>Добавьте параметр <code>?code=ваш_код</code> в URL.</p>`;
+	        document.body.innerHTML = `<h1 style="color: red;">Сокращение ссылок</h1><p style="color: red;">Добавьте параметр <code>?code=ваш_код</code> в URL.</p>`;
 	    }
 	});
     </script>
