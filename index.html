@@ -1,39 +1,80 @@
-<html>
-    <head>
-        <title>TheRaiders DB | Переадресация...</title>
-		<meta content="TheRaiders DB" property="og:title" />
-		<meta content="Ники под сливы" property="og:description" />
-		<meta content="#FF0000" data-react-helmet="true" name="theme-color" />
-		<style>
-			.center {
-				color: red;
-				font-family: monospace;
-				font-size: xxx-large;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				text-align: center;
-				min-height: 100vh;
-				justify-content: center;
-			}
-			.loading {
-			display:inline-block;
-			clip-path: inset(0 3ch 0 0);
-			animation: l 1s steps(4) infinite;
-			}
-			@keyframes l {
-			  to {
-				clip-path: inset(0 -1ch 0 0)
-			  }
-			}
-		</style>
-    </head>
-    <body style="background-color: black;">
-		<div class="center">
-			<div class="loading">TheRaiders | Переадресация...</div>
-		</div>
-        <script>
-		location.replace("https://24.ip.gl.ply.gg:7286/");
-        </script>
-    </body>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <title>TheRaiders DB | Переадресация...</title>
+   <meta content="TheRaiders DB" property="og:title" />
+   <meta content="Ники под сливы" property="og:description" />
+   <meta content="#FF0000" data-react-helmet="true" name="theme-color" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Redirect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+	    background-color: black;
+        }
+
+        /* Стили загрузки */
+        .loading {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 5px solid #3498db;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        const urlMappings = {
+            "mtdb": "http://22.ip.gl.ply.gg:53657/",
+            "mtdbs": "https://24.ip.gl.ply.gg:7286/",
+            "mtdbi": "http://147.185.221.22:53657/",
+	    "mtdbis": "https://147.185.221.24:7286/",
+	    "lesta_clan": "https://lesta.ru/clans/wot/565993",
+            "my_tg": "https://t.me/NCraftIngEnetTM",
+	    "my_steam": "https://steamcommunity.com/id/NCraftIngEnetTM/"
+        };
+
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const code = getQueryParameter("code");
+            const loadingElement = document.querySelector(".loading");
+
+            if (code) {
+                loadingElement.style.display = "block";
+
+                setTimeout(() => {
+                    if (urlMappings[code]) {
+                        window.location.href = urlMappings[code];
+                    } else {
+                        loadingElement.style.display = "none";
+                        document.body.innerHTML = `<h1>Ошибка</h1><p>Код "${code}" не найден.</p>`;
+                    }
+                }, 1500);
+            } else {
+                loadingElement.style.display = "none";
+                document.body.innerHTML = `<h1>Сокращение ссылок</h1><p>Добавьте параметр <code>?code=код</code> в URL.</p>`;
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="loading" style="display: none;"></div>
+    <h1>Загрузка...</h1>
+</body>
 </html>
