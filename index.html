@@ -36,15 +36,7 @@
         }
     </style>
     <script>
-        const urlMappings = {
-            "mtdb": "http://22.ip.gl.ply.gg:53657/",
-            "mtdbs": "https://24.ip.gl.ply.gg:7286/",
-            "mtdbi": "http://147.185.221.22:53657/",
-	    "mtdbis": "https://147.185.221.24:7286/",
-	    "lesta_clan": "https://lesta.ru/clans/wot/565993",
-            "my_tg": "https://t.me/NCraftIngEnetTM",
-	    "my_steam": "https://steamcommunity.com/id/NCraftIngEnetTM/"
-        };
+        const urlMappings = ;
 
         function getQueryParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);
@@ -52,25 +44,35 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            const code = getQueryParameter("code");
-            const loadingElement = document.querySelector(".loading");
-
-            if (code) {
-                loadingElement.style.display = "block";
-
-                setTimeout(() => {
-                    if (urlMappings[code]) {
-                        window.location.href = urlMappings[code];
-                    } else {
-                        loadingElement.style.display = "none";
-                        document.body.innerHTML = `<h1>Ошибка</h1><p>Код "${code}" не найден.</p>`;
-                    }
-                }, 1500);
-            } else {
-                loadingElement.style.display = "none";
-                document.body.innerHTML = `<h1>Сокращение ссылок</h1><p>Добавьте параметр <code>?code=код</code> в URL.</p>`;
-            }
-        });
+	    const code = getQueryParameter("code");
+	    const loadingElement = document.querySelector(".loading");
+	
+	    if (code) {
+	        loadingElement.style.display = "block";
+	
+	        fetch('urls.json')
+	            .then(response => {
+	                if (!response.ok) {
+	                    throw new Error('Не удалось загрузить JSON.');
+	                }
+	                return response.json();
+	            })
+	            .then(urlMappings => {
+	                if (urlMappings[code]) {
+	                    window.location.href = urlMappings[code];
+	                } else {
+	                    loadingElement.style.display = "none";
+	                    document.body.innerHTML = `<h1>Ошибка</h1><p>Код "${code}" не найден.</p>`;
+	                }
+	            })
+	            .catch(error => {
+	                loadingElement.style.display = "none";
+	                document.body.innerHTML = `<h1>Ошибка</h1><p>Произошла ошибка: ${error.message}</p>`;
+	            });
+	    } else {
+	        document.body.innerHTML = `<h1>Сокращение ссылок</h1><p>Добавьте параметр <code>?code=ваш_код</code> в URL.</p>`;
+	    }
+	});
     </script>
 </head>
 <body>
